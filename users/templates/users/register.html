@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Register | Django Auth App
+{% endblock %}
+
+{% block content %}
+
+
+<main class="form-wrapper">
+        <h1 class="title">Register new user</h1>
+        <form class="form-control" action="/users/register/" method="POST">
+            {% csrf_token %}
+            {{ form }}
+            <button type="submit">Submit</button>
+        </form>
+    </main>
+
+{% endblock %}

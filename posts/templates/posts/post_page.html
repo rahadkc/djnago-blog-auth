@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    post.title
+{% endblock %}
+
+{% block content %}
+
+<h1>{{ post.title }}</h1>
+
+<section class="blog-section">
+    {% comment %} <article class="blog-article"> {% endcomment %}
+        <h4>{{post.date}} by {{ post.author}} </h4>
+        {% if post.banner %}
+             <figure>
+                <img src="{{ post.banner.url }}" alt="{{ post.title }}" />
+            </figure>
+        {% endif %}
+        <p>{{post.content}}</p>
+
+    {% comment %} </article> {% endcomment %}
+</section>
+
+
+{% endblock %}

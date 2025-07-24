@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+
+{% block title %}
+New Post | Django Auth App
+{% endblock %}
+
+{% block content %}
+
+
+<main class="form-wrapper">
+    <h1 class="title">Add New Post</h1>
+    <form class="form-control" action="{% url 'posts:new-post' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.media }}
+        {{ form }}
+        <button type="submit">Submit</button>
+    </form>
+</main>
+
+{% endblock %}

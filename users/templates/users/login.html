@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Register | Django Auth App
+{% endblock %}
+
+{% block content %}
+
+
+<main class="form-wrapper">
+        <h1 class="title">Login</h1>
+        <form class="form-control" action="/users/login/" method="POST">
+            {% csrf_token %}
+            {{ form }}
+            {% if request.GET.next %}
+                    <input type="hidden" name="next" value="{{ request.GET.next }}">
+            {% endif %}
+            <button type="submit">Submit</button>
+        </form>
+    </main>
+
+{% endblock %}
