@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-nb9q&r2p4v!+%opo&g^^nznu&eqaio6#x!m$dsszzoax-e!z#s
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False') == 'True'  # Convert string to boolean
-
+print(f"DEBUG value: {DEBUG}")
 '''
 New Comment example
 '''
@@ -65,6 +65,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+
 ]
 
 ROOT_URLCONF = 'projauth.urls'
@@ -145,6 +147,10 @@ STATICFILES_DIRS = [
 
 # Location for collected static files
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# For Production
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 MEDIA_URL = 'media/'
 
