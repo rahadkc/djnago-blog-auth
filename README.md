@@ -1,3 +1,47 @@
+# Deployment Basic
+
+- Change `DEBUG=True` to `DEBUG=False`
+- Check `staticfiles/` and `media/` file settings
+    &nbsp;
+  ```bash 
+    STATIC_URL = 'static/'
+
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, 'static')
+    ]
+    # Location for collected static files
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
+
+    MEDIA_URL = 'media/'
+
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
+
+- add `ALLOWED_HOSTS = []` for production ex. `ALLOWED_HOSTS = ['http://your-domain.com]`
+- If app have `forms` need to set `CSRF_TRUSTED_ORIGINS` ex. 
+    &nbsp;
+    ```bash
+    CSRF_TRUSTED_ORIGINS = [
+        'http://localhost:8000', 
+        'http://localhost:5085',                    
+        'http://127.0.0.1:8000', 
+        'http://127.0.0.1:5085', 
+        'https://djnago-blog-auth.onrender.com'
+    ]
+
+### 🏬 Render Host - deployment
+
+- **Build command:** if all the commands are describe in production settings ex.-
+  -  `pip install -r requirements.txt && python manage.py migrate && python manage.py collectstatic --no-input` 
+  -  If you have more command include or remove as needed
+- **Start command** `python manage.py runserver 0.0.0.0:8000` 
+- **Env** check if envrionment variable available then then set it up 
+- **Real-time Notification** `start command` would be different, check it carefully
+
+### 🫙 Dump local Database `data` in a file
+```bash
+python3 manage.py dumpdata --output=data,json
+```
+
 # Issues
 
 ### CKEditor  

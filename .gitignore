@@ -167,3 +167,6 @@ media/
 staticfiles/
 
 .DS_Store
+.env
+.env.prod
+data.json
