@@ -7,7 +7,6 @@ from . import forms
 
 # Create your views here.
 
-
 def post_list(request):
     posts = Post.objects.all().order_by('-date')
     return render(request, 'posts/post_list.html', {'posts': posts})

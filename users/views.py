@@ -1,11 +1,8 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout
-from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
-
-
-# Create your views here.
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.decorators import login_required
 
 
 def register_view(request):
@@ -21,9 +18,8 @@ def register_view(request):
 
 def login_view(request):
     if request.method == 'POST':
-        form = AuthenticationForm(data=request.POST)
+        form = AuthenticationForm()
         if form.is_valid():
-            # form.save()
             login(request, form.get_user())
             if 'next' in request.POST:
                 return redirect(request.POST.get('next'))

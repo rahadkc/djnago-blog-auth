@@ -2,8 +2,10 @@
 from django.urls import path
 
 from . import views
+from django.template.context_processors import request
 
 app_name = 'users'
+
 
 urlpatterns = [
     path('', views.user_list, name="list"),

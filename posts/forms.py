@@ -3,6 +3,7 @@ from . import models
 import bleach
 from ckeditor.widgets import CKEditorWidget
 from django_bleach.forms import BleachField   # keeps widget but adds cleaning
+from django.http import HttpRequest
 
 
 class CreatePost(forms.ModelForm):
